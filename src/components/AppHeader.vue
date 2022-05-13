@@ -104,6 +104,7 @@ header {
 				height: 2rem;
 				display: grid;
 				gap: 0.5rem;
+					transition: 0.2s;
 				span {
 					transition: 0.2s;
 					height: 0.3rem;
@@ -112,6 +113,10 @@ header {
 			}
 			&:hover {
 				cursor: pointer;
+				article {
+
+					transform: scale(110%);
+				}
 			}
 		}
 		.open {

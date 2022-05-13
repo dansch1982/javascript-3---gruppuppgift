@@ -1,7 +1,7 @@
 <template>
-	<AppHeader />
-	<AppMain />
-	<AppFooter />
+	<AppHeader v-model=showSchedule />
+	<AppMain :showSchedule="showSchedule" />
+	<AppFooter  />
 </template>
 
 <script>
@@ -12,6 +12,11 @@ import AppFooter from "./components/AppFooter.vue";
 export default {
 	name: "App",
 	components: { AppHeader, AppMain, AppFooter },
+	data() {
+		return {
+			showSchedule: false,
+		};
+	},
 };
 </script>
 

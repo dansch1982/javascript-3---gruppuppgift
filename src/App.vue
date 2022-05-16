@@ -1,7 +1,7 @@
 <template>
-	<AppHeader v-model=showSchedule />
-	<AppMain :showSchedule="showSchedule" />
-	<AppFooter  />
+	<AppHeader v-model="showSchedule" @updateState="updateState" />
+	<AppMain :showSchedule="showSchedule" :state="state" @closeSchedule="closeSchedule" />
+	<AppFooter />
 </template>
 
 <script>
@@ -15,7 +15,16 @@ export default {
 	data() {
 		return {
 			showSchedule: false,
+			state: "",
 		};
+	},
+	methods: {
+		closeSchedule() {
+			this.showSchedule = false;
+		},
+		updateState(value) {
+			this.state = value;
+		},
 	},
 };
 </script>

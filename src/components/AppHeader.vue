@@ -1,17 +1,16 @@
 <template>
 	<header>
 		<section class="container">
-			<article class="logo">
+			<article class="logo" @click="updateState('')">
 				<img src="../assets/logo2.png" alt="" />
 				<h1>Tivoliè</h1>
 			</article>
-			<article class="info">info</article>
+			<article class="info" ref="info"></article>
 		</section>
 		<section class="container nav">
 			<nav>
-				<button>Attraktioner</button>
-				<button>Event</button>
-				<button>Restaurang</button>
+				<button v-for="(button, index) in buttons" :key="index" @click="updateState(button)">{{button}}</button>
+				
 				<section class="scheduleToggler" @click="toggleSchedule" ref="scheduleToggler">
 					<article>
 						<span></span>
@@ -28,8 +27,17 @@
 export default {
 	data() {
 		return {
+			buttons: ["attraktioner", "event", "restaurang"],
 			showSchedule: false,
 		};
+	},
+	mounted() {
+		if (!this.interval) {
+			this.updateInfo();
+			this.interval = setInterval(() => {
+				this.updateInfo();
+			}, 60_000);
+		}
 	},
 	methods: {
 		toggleSchedule() {
@@ -37,6 +45,21 @@ export default {
 			this.showSchedule = !this.showSchedule;
 			this.$emit("update:modelValue", this.showSchedule);
 		},
+		async updateInfo() {
+			const url = new URL("https://api.met.no/weatherapi/nowcast/2.0/complete");
+
+			url.searchParams.append("lat", "60.6749");
+			url.searchParams.append("lon", "17.1413");
+
+			const data = await (await fetch(url)).json();
+			const temp = data.properties.timeseries[0].data.instant.details.air_temperature + "C";
+
+			const date = new Date().toLocaleDateString("sv-SE", { hour: "2-digit", minute: "2-digit" });
+			this.$refs.info.innerText = `Tid\n${date}\n\nTemperatur\n${temp}`;
+		},
+		updateState(value) {
+			this.$emit('updateState', value)
+		}
 	},
 	props: {
 		moduleValue: Boolean,
@@ -60,6 +83,9 @@ header {
 			justify-content: center;
 			align-items: center;
 			padding: 1rem;
+			&:hover {
+				cursor: pointer;
+			}
 			img {
 				height: 8rem;
 			}
@@ -73,7 +99,8 @@ header {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			background-color: aqua;
+			color: black;
+			font-size: larger;
 		}
 	}
 	nav {
@@ -83,6 +110,7 @@ header {
 		display: flex;
 		justify-content: center;
 		button {
+			text-transform: capitalize;
 			background-color: unset;
 			border: none;
 			padding: 0 1rem;
@@ -104,7 +132,7 @@ header {
 				height: 2rem;
 				display: grid;
 				gap: 0.5rem;
-					transition: 0.2s;
+				transition: 0.2s;
 				span {
 					transition: 0.2s;
 					height: 0.3rem;
@@ -114,7 +142,6 @@ header {
 			&:hover {
 				cursor: pointer;
 				article {
-
 					transform: scale(110%);
 				}
 			}

@@ -26,7 +26,7 @@ export default {
         showSchedule: {
             handler: function () {
                 this.$refs.aside.classList.toggle("open");
-                this.$refs.overlay.classList.toggle("display-block");
+                this.$refs.overlay.classList.toggle("opacity-0");
             },
         },
     },
@@ -63,17 +63,19 @@ main {
 		}
 	}
 	.overlay {
-		z-index: 10;
+		z-index: -10;
 		position: fixed;
 		top: 0;
 		left: 0;
 		background-color: rgba($color: #000000, $alpha: 0.4);
 		width: 100%;
 		height: 100%;
-		display: none;
+		opacity: 0;
+		transition: 0.2s;
 	}
-	.display-block {
-		display: block;
+	.opacity-0 {
+		z-index: 10;
+		opacity: 100;
 	}
 	.open {
 		width: 30%;

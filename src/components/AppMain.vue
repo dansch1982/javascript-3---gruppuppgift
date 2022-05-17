@@ -1,11 +1,14 @@
 <template>
 	<main>
-		<AppAttraktioner v-if="state === 'attraktioner'" />
+		<AppAttraktioner v-if="state === 'attraktioner'" @book="book" />
 		<section v-else-if="state === 'event'">Event</section>
 		<section v-else-if="state === 'restaurang'">Restaurang</section>
 		<section v-else>Hello</section>
 		<aside ref="aside">
-			<section id="section" class="section">Schedule</section>
+			<section id="section" class="section">
+				<h2>Schedule</h2>
+				<section class="bookings" ref="bookings"></section>
+			</section>
 		</aside>
 		<section class="overlay" ref="overlay"></section>
 	</main>
@@ -14,32 +17,42 @@
 <script>
 import AppAttraktioner from "./AppAttraktioner.vue";
 export default {
-    data() {
-        return {};
-    },
-    mounted() {
-        /* this.$refs.overlay.addEventListener("click", () => {
+	data() {
+		return {};
+	},
+	mounted() {
+		/* this.$refs.overlay.addEventListener("click", () => {
             this.$emit("closeSchedule")
         }); */
-    },
-    watch: {
-        showSchedule: {
-            handler: function () {
-                this.$refs.aside.classList.toggle("open");
-                this.$refs.overlay.classList.toggle("opacity-0");
-            },
-        },
-    },
-    props: {
-        showSchedule: Boolean,
-        state: String,
-    },
-    components: { AppAttraktioner }
+	},
+	watch: {
+		showSchedule: {
+			handler: function () {
+				this.$refs.aside.classList.toggle("open");
+				this.$refs.overlay.classList.toggle("opacity-100");
+				this.$refs.overlay.classList.toggle("z-index-10");
+			},
+		},
+	},
+	methods: {
+		book(value) {
+			const {attraktion, index} = value
+			const {name, slots} = attraktion
+			const {time} = slots[index]
+			const bookings = this.$refs.bookings;
+			bookings.innerText += `${name}\n${time}\n`
+		},
+	},
+	props: {
+		showSchedule: Boolean,
+		state: String,
+	},
+	components: { AppAttraktioner },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../style/imports";
+@import "@/style/imports";
 main {
 	height: 100%;
 	position: relative;
@@ -61,21 +74,6 @@ main {
 		section {
 			padding: 1rem;
 		}
-	}
-	.overlay {
-		z-index: -10;
-		position: fixed;
-		top: 0;
-		left: 0;
-		background-color: rgba($color: #000000, $alpha: 0.4);
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		transition: 0.2s;
-	}
-	.opacity-0 {
-		z-index: 10;
-		opacity: 100;
 	}
 	.open {
 		width: 30%;

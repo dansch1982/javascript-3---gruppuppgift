@@ -1,13 +1,10 @@
 <template>
 	<section>
-		<img :src="attraktion.img" alt="" />
+		<img :src="require('@/assets/' + attraktion.img)" alt="" />
 		<article>
 			<h2>
 				{{ attraktion.name }}
 			</h2>
-			<p>
-				{{ attraktion.desc }}
-			</p>
 		</article>
 	</section>
 </template>
@@ -16,18 +13,15 @@ export default {
 	props: {
 		attraktion: Object,
 	},
+	methods: {},
 };
 </script>
 <style lang="scss" scoped>
 @import "../style/imports";
 section {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	width: max-content;
-	transition: 0.2s;
-	box-shadow: 5px 5px 1rem 1px black;
-	border-radius: 10px;
+	width: 300px;
+	max-width: 300px;
+@include card;
 	img {
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
@@ -36,14 +30,14 @@ section {
 	}
 	article {
 		padding: 1rem;
-		h2 {
+		h2, h3 {
 			text-align: center;
 		}
 	}
 	//padding: 1rem;
 	&:hover {
 		transform: scale(1.1);
-        cursor: pointer;
+		cursor: pointer;
 	}
 }
 </style>

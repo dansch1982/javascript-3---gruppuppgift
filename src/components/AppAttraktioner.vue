@@ -2,7 +2,7 @@
 	<section>
 		<h2>Attraktioner</h2>
 		<section class="section">
-			<AppAttraktion v-for="(attraktion, index) in attraktioner" :key="index" :attraktion="attraktion" @click="showAttraction(attraktion)" />
+			<AppAttraktion v-for="(attraktion, index) in store.attraktioner" :key="index" :attraktion="attraktion" @click="showAttraction(attraktion)" />
 		</section>
 		<section class="popup" ref="popup">
 			<section class="bg"></section>
@@ -25,63 +25,16 @@
 </template>
 <script>
 import AppAttraktion from "./AppAttraktion.vue";
+import { store } from "@/store";
 export default {
 	data() {
 		return {
 			current: {
 				name: null,
 				desc: null,
-				img: "radiobil.jpg",
+				img: "placeholder.png",
 			},
-			attraktioner: [
-				{
-					name: "Radiobilarna",
-					img: "radiobil.jpg",
-					slots: [
-						{
-							time: "10:00",
-							space: 10,
-						},
-						{
-							time: "10:30",
-							space: 10,
-						},
-						{
-							time: "11:00",
-							space: 10,
-						},
-					],
-				},
-				{
-					name: "Pariserhjul",
-					img: "pariserhjul.jpg",
-					space: 10,
-					slots: [
-						{
-							time: "10:00",
-							space: 10,
-						},
-						{
-							time: "10:30",
-							space: 10,
-						},
-						{
-							time: "11:00",
-							space: 10,
-						},
-					],
-				},
-				{
-					name: "Bergochdalbana",
-					img: "bergochdalbana.jpg",
-					space: 10,
-				},
-				{
-					name: "Slänggunga",
-					img: "gunga.jpg",
-					space: 10,
-				},
-			],
+			store: store
 		};
 	},
 	mounted() {
@@ -98,7 +51,7 @@ export default {
 				attraktion: current,
 				index: index,
 			};
-			this.$emit("book", object);
+			this.store.addBooking(object);
 		},
 		reset() {
 			this.current = {

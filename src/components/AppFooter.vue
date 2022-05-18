@@ -2,30 +2,18 @@
 	<footer>
 		<section class="container">
 			<article>
-				<h2>List titel</h2>
+				<h2>Om oss</h2>
 				<ul>
-					<li>Item</li>
-					<li>Item</li>
-					<li>Item</li>
-					<li>Item</li>
+					<li>Hitta hit</li>
+					<li>Kontakt</li>
 				</ul>
 			</article>
 			<article>
-				<h2>List titel</h2>
+				<h2>Följ oss</h2>
 				<ul>
-					<li>Item</li>
-					<li>Item</li>
-					<li>Item</li>
-					<li>Item</li>
-				</ul>
-			</article>
-			<article>
-				<h2>List titel</h2>
-				<ul>
-					<li>Item</li>
-					<li>Item</li>
-					<li>Item</li>
-					<li>Item</li>
+					<li>Facebook</li>
+					<li>Instagram</li>
+					<li>Tiktok</li>
 				</ul>
 			</article>
 		</section>
@@ -57,8 +45,10 @@ footer {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				justify-content: center;
 				list-style: none;
+				li {
+					width: 100%;
+				}
 			}
 		}
 	}

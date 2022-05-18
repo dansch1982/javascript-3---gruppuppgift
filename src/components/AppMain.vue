@@ -1,14 +1,11 @@
 <template>
 	<main>
-		<AppAttraktioner v-if="state === 'attraktioner'" @book="book" />
-		<section v-else-if="state === 'event'">Event</section>
+		<AppAttraktioner v-if="state === 'attraktioner'" />
+		<section v-else-if="state === 'event'">Events i närheten av tivolit.</section>
 		<section v-else-if="state === 'restaurang'">Restaurang</section>
-		<section v-else>Hello</section>
+		<section v-else>Välkommen till oss. Våra öppentider är 08:30 till 20:00</section>
 		<aside ref="aside">
-			<section id="section" class="section">
-				<h2>Schedule</h2>
-				<section class="bookings" ref="bookings"></section>
-			</section>
+			<AppAside />
 		</aside>
 		<section class="overlay" ref="overlay"></section>
 	</main>
@@ -16,15 +13,12 @@
 
 <script>
 import AppAttraktioner from "./AppAttraktioner.vue";
+import AppAside from "./AppAside.vue";
 export default {
 	data() {
 		return {};
 	},
-	mounted() {
-		/* this.$refs.overlay.addEventListener("click", () => {
-            this.$emit("closeSchedule")
-        }); */
-	},
+	mounted() {},
 	watch: {
 		showSchedule: {
 			handler: function () {
@@ -34,20 +28,12 @@ export default {
 			},
 		},
 	},
-	methods: {
-		book(value) {
-			const {attraktion, index} = value
-			const {name, slots} = attraktion
-			const {time} = slots[index]
-			const bookings = this.$refs.bookings;
-			bookings.innerText += `${name}\n${time}\n`
-		},
-	},
+	methods: {},
 	props: {
 		showSchedule: Boolean,
 		state: String,
 	},
-	components: { AppAttraktioner },
+	components: { AppAttraktioner, AppAside },
 };
 </script>
 
@@ -71,12 +57,10 @@ main {
 		position: absolute;
 		overflow: hidden;
 		transition: 0.2s;
-		section {
-			padding: 1rem;
-		}
 	}
 	.open {
 		width: 30%;
+		min-width: max-content;
 	}
 }
 </style>

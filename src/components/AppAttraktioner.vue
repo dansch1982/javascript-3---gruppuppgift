@@ -34,7 +34,7 @@ export default {
 				desc: null,
 				img: "placeholder.png",
 			},
-			store: store
+			store: store,
 		};
 	},
 	mounted() {
@@ -129,7 +129,12 @@ section {
 		}
 		.info {
 			padding: 3rem 1rem;
+			max-width: 50%;
+			height: 100%;
+			overflow-x: hidden;
+			overflow-y: auto;
 			@media only screen and (max-width: 1000px) {
+				max-width: 100%;
 				padding: 1rem;
 			}
 			h2 {
@@ -140,11 +145,14 @@ section {
 			}
 			p {
 				padding: 0.5rem;
+				text-align: center;
 			}
 			.buttons {
 				display: flex;
 				flex-wrap: wrap;
 				gap: 0.5rem;
+				align-content: center;
+				justify-content: center;
 				.button {
 					button {
 						position: relative;

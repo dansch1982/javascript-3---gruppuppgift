@@ -55,7 +55,7 @@ main {
 		top: 0;
 		right: 0;
 		position: absolute;
-		overflow: hidden;
+		overflow: auto;
 		transition: 0.2s;
 	}
 	.open {

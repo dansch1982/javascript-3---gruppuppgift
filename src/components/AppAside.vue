@@ -38,9 +38,10 @@ export default {
 	flex-direction: column;
 	gap: 1rem;
 	padding: 1rem;
-	overflow: hidden;
+	overflow: auto;
 	h2 {
 		text-align: center;
+		white-space: nowrap;
 	}
 	.bookings {
 		display: flex;

@@ -7,6 +7,14 @@ export const store = reactive({
 			img: "radiobil.jpg",
 			slots: [
 				{
+					time: "09:00",
+					space: 10,
+				},
+				{
+					time: "09:30",
+					space: 10,
+				},
+				{
 					time: "10:00",
 					space: 10,
 				},
@@ -16,6 +24,66 @@ export const store = reactive({
 				},
 				{
 					time: "11:00",
+					space: 10,
+				},
+				{
+					time: "11:30",
+					space: 10,
+				},
+				{
+					time: "12:00",
+					space: 10,
+				},
+				{
+					time: "12:30",
+					space: 10,
+				},
+				{
+					time: "13:00",
+					space: 10,
+				},
+				{
+					time: "13:30",
+					space: 10,
+				},
+				{
+					time: "14:00",
+					space: 10,
+				},
+				{
+					time: "14:30",
+					space: 10,
+				},
+				{
+					time: "15:00",
+					space: 10,
+				},
+				{
+					time: "15:30",
+					space: 10,
+				},
+				{
+					time: "16:00",
+					space: 10,
+				},
+				{
+					time: "16:30",
+					space: 10,
+				},
+				{
+					time: "17:00",
+					space: 10,
+				},
+				{
+					time: "17:30",
+					space: 10,
+				},
+				{
+					time: "18:00",
+					space: 10,
+				},
+				{
+					time: "18:30",
 					space: 10,
 				},
 			],
@@ -26,6 +94,14 @@ export const store = reactive({
 			space: 10,
 			slots: [
 				{
+					time: "09:00",
+					space: 10,
+				},
+				{
+					time: "09:30",
+					space: 10,
+				},
+				{
 					time: "10:00",
 					space: 10,
 				},
@@ -35,6 +111,66 @@ export const store = reactive({
 				},
 				{
 					time: "11:00",
+					space: 10,
+				},
+				{
+					time: "11:30",
+					space: 10,
+				},
+				{
+					time: "12:00",
+					space: 10,
+				},
+				{
+					time: "12:30",
+					space: 10,
+				},
+				{
+					time: "13:00",
+					space: 10,
+				},
+				{
+					time: "13:30",
+					space: 10,
+				},
+				{
+					time: "14:00",
+					space: 10,
+				},
+				{
+					time: "14:30",
+					space: 10,
+				},
+				{
+					time: "15:00",
+					space: 10,
+				},
+				{
+					time: "15:30",
+					space: 10,
+				},
+				{
+					time: "16:00",
+					space: 10,
+				},
+				{
+					time: "16:30",
+					space: 10,
+				},
+				{
+					time: "17:00",
+					space: 10,
+				},
+				{
+					time: "17:30",
+					space: 10,
+				},
+				{
+					time: "18:00",
+					space: 10,
+				},
+				{
+					time: "18:30",
 					space: 10,
 				},
 			],
@@ -45,6 +181,14 @@ export const store = reactive({
 			space: 10,
 			slots: [
 				{
+					time: "09:00",
+					space: 10,
+				},
+				{
+					time: "09:30",
+					space: 10,
+				},
+				{
 					time: "10:00",
 					space: 10,
 				},
@@ -54,6 +198,66 @@ export const store = reactive({
 				},
 				{
 					time: "11:00",
+					space: 10,
+				},
+				{
+					time: "11:30",
+					space: 10,
+				},
+				{
+					time: "12:00",
+					space: 10,
+				},
+				{
+					time: "12:30",
+					space: 10,
+				},
+				{
+					time: "13:00",
+					space: 10,
+				},
+				{
+					time: "13:30",
+					space: 10,
+				},
+				{
+					time: "14:00",
+					space: 10,
+				},
+				{
+					time: "14:30",
+					space: 10,
+				},
+				{
+					time: "15:00",
+					space: 10,
+				},
+				{
+					time: "15:30",
+					space: 10,
+				},
+				{
+					time: "16:00",
+					space: 10,
+				},
+				{
+					time: "16:30",
+					space: 10,
+				},
+				{
+					time: "17:00",
+					space: 10,
+				},
+				{
+					time: "17:30",
+					space: 10,
+				},
+				{
+					time: "18:00",
+					space: 10,
+				},
+				{
+					time: "18:30",
 					space: 10,
 				},
 			],
@@ -64,6 +268,14 @@ export const store = reactive({
 			space: 10,
 			slots: [
 				{
+					time: "09:00",
+					space: 10,
+				},
+				{
+					time: "09:30",
+					space: 10,
+				},
+				{
 					time: "10:00",
 					space: 10,
 				},
@@ -73,6 +285,66 @@ export const store = reactive({
 				},
 				{
 					time: "11:00",
+					space: 10,
+				},
+				{
+					time: "11:30",
+					space: 10,
+				},
+				{
+					time: "12:00",
+					space: 10,
+				},
+				{
+					time: "12:30",
+					space: 10,
+				},
+				{
+					time: "13:00",
+					space: 10,
+				},
+				{
+					time: "13:30",
+					space: 10,
+				},
+				{
+					time: "14:00",
+					space: 10,
+				},
+				{
+					time: "14:30",
+					space: 10,
+				},
+				{
+					time: "15:00",
+					space: 10,
+				},
+				{
+					time: "15:30",
+					space: 10,
+				},
+				{
+					time: "16:00",
+					space: 10,
+				},
+				{
+					time: "16:30",
+					space: 10,
+				},
+				{
+					time: "17:00",
+					space: 10,
+				},
+				{
+					time: "17:30",
+					space: 10,
+				},
+				{
+					time: "18:00",
+					space: 10,
+				},
+				{
+					time: "18:30",
 					space: 10,
 				},
 			],

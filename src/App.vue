@@ -29,6 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/style/imports";
 * {
 	margin: 0;
 	padding: 0;
@@ -36,9 +37,11 @@ export default {
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 #app {
+	position: relative;
 	display: grid;
 	grid-template-rows: max-content auto max-content;
 	width: 100vw;
 	height: 100vh;
+	overflow: hidden;
 }
 </style>

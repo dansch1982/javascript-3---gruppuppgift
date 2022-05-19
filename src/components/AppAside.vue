@@ -20,7 +20,10 @@ export default {
 	data() {
 		return {
 			store,
+			array: Array.from(store.bookings)
 		};
+	},
+	mounted() {
 	},
     methods: {
         remove(booking) {

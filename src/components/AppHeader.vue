@@ -48,8 +48,8 @@ export default {
 		async updateInfo() {
 			const url = new URL("https://api.met.no/weatherapi/nowcast/2.0/complete");
 
-			url.searchParams.append("lat", "60.6749");
-			url.searchParams.append("lon", "17.1413");
+			url.searchParams.append("lat", "60.6499");
+			url.searchParams.append("lon", "17.3459");
 
 			const data = await (await fetch(url)).json();
 			const temp = data.properties.timeseries[0].data.instant.details.air_temperature + "C";

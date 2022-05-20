@@ -1,8 +1,8 @@
 <template>
 	<main>
 		<AppAttraktioner v-if="state === 'attraktioner'" />
-		<section v-else-if="state === 'event'">Events i närheten av tivolit.</section>
 		<section v-else-if="state === 'restaurang'">Restaurang</section>
+		<section v-else-if="state === 'närområde'">Intressanta platser i närområdet.</section>
 		<section v-else>Välkommen till oss. Våra öppentider är 08:30 till 20:00</section>
 		<aside ref="aside">
 			<AppAside />

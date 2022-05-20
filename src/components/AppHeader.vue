@@ -27,7 +27,7 @@
 export default {
 	data() {
 		return {
-			buttons: ["attraktioner", "event", "restaurang"],
+			buttons: ["attraktioner", "restaurang", "närområde"],
 			showSchedule: false,
 		};
 	},

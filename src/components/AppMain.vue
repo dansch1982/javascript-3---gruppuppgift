@@ -1,9 +1,9 @@
 <template>
 	<main>
 		<AppAttraktioner v-if="state === 'attraktioner'" />
-		<section v-else-if="state === 'restaurang'">Restaurang</section>
-		<section v-else-if="state === 'närområde'">Intressanta platser i närområdet.</section>
-		<section v-else>Välkommen till oss. Våra öppentider är 08:30 till 20:00</section>
+		<AppRestaurang v-else-if="state === 'restaurang'" />
+		<AppAround  v-else-if="state === 'närområde'" />
+		<AppHome v-else />
 		<aside ref="aside">
 			<AppAside />
 		</aside>
@@ -14,6 +14,9 @@
 <script>
 import AppAttraktioner from "./AppAttraktioner.vue";
 import AppAside from "./AppAside.vue";
+import AppRestaurang from "./AppRestaurang.vue";
+import AppHome from "./AppHome.vue";
+import AppAround from "./AppAround.vue";
 export default {
 	data() {
 		return {};
@@ -33,7 +36,7 @@ export default {
 		showSchedule: Boolean,
 		state: String,
 	},
-	components: { AppAttraktioner, AppAside },
+	components: { AppAttraktioner, AppAside, AppRestaurang, AppHome, AppAround },
 };
 </script>
 

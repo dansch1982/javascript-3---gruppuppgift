@@ -350,6 +350,23 @@ export const store = reactive({
 			],
 		},
 	],
+	restaurang: {
+		name: "Restaurang",
+		slots: [
+			{
+				time: "11:00",
+				space: 20,
+			},
+			{
+				time: "12:00",
+				space: 20,
+			},
+			{
+				time: "13:00",
+				space: 20,
+			},
+		],
+	},
 	addBooking(value) {
 		this.bookings.push(value);
 		this.sort();

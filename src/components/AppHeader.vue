@@ -83,6 +83,7 @@ header {
 			justify-content: center;
 			align-items: center;
 			padding: 1rem;
+			gap: 1rem;
 			&:hover {
 				cursor: pointer;
 			}
@@ -90,8 +91,10 @@ header {
 				height: 8rem;
 			}
 			h1 {
-				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-				font-size: 5rem;
+				//font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				font-family: 'Dancing Script', cursive;
+				font-weight: bold;
+				font-size: 6rem;
 			}
 		}
 		.info {

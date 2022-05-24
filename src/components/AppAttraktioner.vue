@@ -48,6 +48,7 @@ export default {
 			const slot = slots[index];
 			slot.space--;
 			const object = {
+				cat: "attraktioner",
 				attraktion: current,
 				index: index,
 			};
@@ -205,7 +206,5 @@ section {
 		}
 	}
 }
-.red {
-	background-color: red !important;
-}
+
 </style>

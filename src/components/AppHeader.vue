@@ -5,14 +5,20 @@
 				<img src="../assets/logo2.png" alt="" />
 				<h1>Tivoliè</h1>
 			</article>
-			<article class="info" ref="info"></article>
+			<section class="info">
+				<section class="container">
+					<article class="time">Tid <span ref="time"></span></article>
+					<article class="temp">Temp <span ref="temp"></span></article>
+				</section>
+			</section>
 		</section>
 		<section class="container nav">
 			<nav>
-				<button v-for="(button, index) in buttons" :key="index" @click="updateState(button)">{{button}}</button>
-				
+				<button v-for="(button, index) in buttons" :key="index" @click="updateState(button)">{{ button }}</button>
+
 				<section class="scheduleToggler" @click="toggleSchedule" ref="scheduleToggler">
-					<article>
+					<article :class="store.bookings.length <= 0 ? 'blob' : 'blob scale-1'">{{ store.bookings.length }}</article>
+					<article class="hamburger">
 						<span></span>
 						<span></span>
 						<span></span>
@@ -24,9 +30,11 @@
 </template>
 
 <script>
+import { store } from "@/store";
 export default {
 	data() {
 		return {
+			store,
 			buttons: ["attraktioner", "restaurang", "närområde"],
 			showSchedule: false,
 		};
@@ -52,14 +60,18 @@ export default {
 			url.searchParams.append("lon", "17.3459");
 
 			const data = await (await fetch(url)).json();
-			const temp = data.properties.timeseries[0].data.instant.details.air_temperature + "C";
+			const temp = data.properties.timeseries[0].data.instant.details.air_temperature + "°C";
 
-			const date = new Date().toLocaleDateString("sv-SE", { hour: "2-digit", minute: "2-digit" });
-			this.$refs.info.innerText = `Tid\n${date}\n\nTemperatur\n${temp}`;
+			//const date = new Date().toLocaleDateString("sv-SE", { hour: "2-digit", minute: "2-digit" });
+			const date = new Date();
+
+			this.$refs.time.innerText = `${date.getHours()}:${date.getMinutes()}`;
+			this.$refs.temp.innerText = temp;
+			//this.$refs.info.innerText = `Tid ${date.getHours()}:${date.getMinutes()}\nTemperatur ${temp}`;
 		},
 		updateState(value) {
-			this.$emit('updateState', value)
-		}
+			this.$emit("updateState", value);
+		},
 	},
 	props: {
 		moduleValue: Boolean,
@@ -73,12 +85,12 @@ header {
 	display: flex;
 	flex-direction: column;
 	.container {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		width: 100%;
 		justify-content: center;
 		.logo {
-			width: 80%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -91,19 +103,39 @@ header {
 				height: 8rem;
 			}
 			h1 {
-				//font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-				font-family: 'Dancing Script', cursive;
+				font-family: "Dancing Script", cursive;
 				font-weight: bold;
 				font-size: 6rem;
 			}
 		}
 		.info {
-			width: 20%;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: max-content;
 			display: flex;
-			justify-content: center;
-			align-items: center;
-			color: black;
+			justify-content: right;
+			height: max-content;
+			align-items: top;
+			color: whitesmoke;
 			font-size: larger;
+			z-index: 50;
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: left;
+				justify-content: center;
+				line-height: unset;
+				background-color: $primary;
+				padding: 1rem 1.5rem;
+				border-bottom-left-radius: 1rem;
+				width: max-content;
+				article {
+					display: flex;
+					gap: 10px;
+					justify-content: space-between;
+				}
+			}
 		}
 	}
 	nav {
@@ -130,7 +162,22 @@ header {
 			top: 50%;
 			transform: translateY(-50%);
 			z-index: 30;
-			article {
+			.blob {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				top: -28px;
+				left: -28px;
+				border: 2px solid black;
+				background-color: greenyellow;
+				border-radius: 50%;
+				transform: scale(0);
+				transition: 0.2s;
+			}
+			.hamburger {
 				width: 2.5rem;
 				height: 2rem;
 				display: grid;
@@ -141,10 +188,8 @@ header {
 					height: 0.3rem;
 					background-color: white;
 				}
-			}
-			&:hover {
-				cursor: pointer;
-				article {
+				&:hover {
+					cursor: pointer;
 					transform: scale(110%);
 				}
 			}

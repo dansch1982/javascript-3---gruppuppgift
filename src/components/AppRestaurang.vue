@@ -1,7 +1,9 @@
 <template>
 	<section class="restaurang">
-		<h2>Välkommen till våran restaurang</h2>
-		<section class="bg"></section>
+		<h2>Välkommen till vår restaurang</h2>
+		<section class="bg">
+			<article class="menu"></article>
+		</section>
 		<section class="booking">
 			<h3>Boka tid</h3>
 			<section class="buttons">
@@ -28,11 +30,21 @@ export default {
 		book(slot, index) {
 			slot.space--;
 			const object = {
-				cat: "restaurang",
-				attraktion: store.restaurang,
+				booking: store.restaurang,
 				index: index,
 			};
 			this.store.addBooking(object);
+			const toggler = document.querySelector(".scheduleToggler");
+			toggler.classList.toggle("added");
+			toggler.addEventListener(
+				"transitionend",
+				() => {
+					toggler.classList.toggle("added");
+				},
+				{
+					once: true,
+				}
+			);
 		},
 	},
 };
@@ -52,11 +64,31 @@ export default {
 		text-align: center;
 	}
 	.bg {
-        border-radius: 10px;
+		display: flex;
+		justify-content: right;
+		align-items: bottom;
+		border-radius: 10px;
 		box-shadow: 3px 3px 10px black;
 		background-image: url("@/assets/restaurang.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
+		background-position: bottom;
+		padding: 1rem;
+		.menu {
+			margin-top: auto;
+			background-color: white;
+			background-image: url('@/assets/menu.png');
+			background-size: contain;
+			width: 10rem;
+			height: 10rem;
+			border-radius: 50%;
+			border: 5px solid black;
+			transition: 0.2s;
+			&:hover {
+				cursor: pointer;
+				transform: scale(1.1);
+			}
+		}
 	}
 	.booking {
 		display: flex;

@@ -2,11 +2,11 @@
 	<section class="schedule">
 		<h2>Dagens Schema</h2>
 		<section class="bookings" ref="bookings">
-			<AppBooking v-for="(booking, index) in store.bookings" :key="index">
+			<AppBooking v-for="(booking, index) in bookings()" :key="index">
 				<article class="booking">
-					<span class="time">{{ booking.attraktion.slots[booking.index].time }}</span>
-					<span class="name">{{ booking.attraktion.name }}</span>
-					<button class="remove" @click="remove(booking)">✖</button>
+					<span class="time">{{ booking.object.booking.slots[booking.index].time }}</span>
+					<span class="name">{{ booking.amount }}st {{ booking.object.booking.name }}</span>
+					<button class="remove" @click="remove(booking.object)">✖</button>
 				</article>
 			</AppBooking>
 		</section>
@@ -20,16 +20,29 @@ export default {
 	data() {
 		return {
 			store,
-			array: Array.from(store.bookings)
+			bookings() {
+				const object = {};
+				store.bookings.forEach((booking) => {
+					if (!object[`${booking.booking.name}-${booking.index}`]) {
+						object[`${booking.booking.name}-${booking.index}`] = {
+							object: booking,
+							amount: 1,
+							index: booking.index,
+						};
+					} else {
+						object[`${booking.booking.name}-${booking.index}`].amount++;
+					}
+				});
+				return object;
+			},
 		};
 	},
-	mounted() {
+	mounted() {},
+	methods: {
+		remove(booking) {
+			this.store.removeBooking(booking);
+		},
 	},
-    methods: {
-        remove(booking) {
-            this.store.removeBooking(booking)
-        }
-    },
 	components: { AppBooking },
 };
 </script>
@@ -54,9 +67,9 @@ export default {
 			display: flex;
 			gap: 0.5rem;
 			white-space: nowrap;
-            background-color: lighten(#5DB2DE, 10%);
-            border-radius: 5px;
-            padding: 0.25rem 1rem;
+			background-color: lighten(#5db2de, 10%);
+			border-radius: 5px;
+			padding: 0.25rem 1rem;
 			.remove,
 			.name,
 			.time {
@@ -73,11 +86,12 @@ export default {
 				border: none;
 				color: rgb(197, 0, 0);
 				font-size: 1.5rem;
-                &:hover {
-                    cursor: pointer;
-                }
+				&:hover {
+					cursor: pointer;
+				}
 			}
-			.name, .time {
+			.time {
+				font-weight: bold;
 			}
 		}
 	}

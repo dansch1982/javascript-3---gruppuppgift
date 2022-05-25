@@ -48,11 +48,21 @@ export default {
 			const slot = slots[index];
 			slot.space--;
 			const object = {
-				cat: "attraktioner",
-				attraktion: current,
+				booking: current,
 				index: index,
 			};
 			this.store.addBooking(object);
+			const toggler = document.querySelector(".scheduleToggler");
+			toggler.classList.toggle("added");
+			toggler.addEventListener(
+				"transitionend",
+				() => {
+					toggler.classList.toggle("added");
+				},
+				{
+					once: true,
+				}
+			);
 		},
 		reset() {
 			this.current = {
@@ -206,5 +216,4 @@ section {
 		}
 	}
 }
-
 </style>

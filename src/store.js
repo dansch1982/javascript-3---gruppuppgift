@@ -91,7 +91,6 @@ export const store = reactive({
 		{
 			name: "Pariserhjul",
 			img: "pariserhjul.jpg",
-			space: 10,
 			slots: [
 				{
 					time: "09:00",
@@ -178,7 +177,6 @@ export const store = reactive({
 		{
 			name: "Bergochdalbana",
 			img: "bergochdalbana.jpg",
-			space: 10,
 			slots: [
 				{
 					time: "09:00",
@@ -265,7 +263,6 @@ export const store = reactive({
 		{
 			name: "Slänggunga",
 			img: "gunga.jpg",
-			space: 10,
 			slots: [
 				{
 					time: "09:00",
@@ -373,14 +370,14 @@ export const store = reactive({
 	},
 	removeBooking(booking) {
 		const index = this.bookings.indexOf(booking);
-		booking.attraktion.slots[booking.index].space++;
+		booking.booking.slots[booking.index].space++;
 		this.bookings.splice(index, 1);
 		this.sort();
 	},
 	sort() {
 		this.bookings.sort((a, b) => {
-			a = a.attraktion.slots[a.index].time;
-			b = b.attraktion.slots[b.index].time;
+			a = a.booking.slots[a.index].time;
+			b = b.booking.slots[b.index].time;
 			if (a > b) {
 				return 1;
 			}

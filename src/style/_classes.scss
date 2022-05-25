@@ -3,10 +3,6 @@
 .nav {
 	background-color: $primary;
 }
-.container {
-	//max-width: 1200px;
-}
-
 .overlay {
 	@include fixed;
 	z-index: -10;
@@ -79,4 +75,17 @@
 }
 .red {
 	background-color: red !important;
+}
+.green {
+	background-color: greenyellow !important;
+}
+.added {
+	.hamburger {
+		span {
+			@extend .green;
+		}
+	}
+}
+.scale-1 {
+	transform: scale(1)!important;
 }

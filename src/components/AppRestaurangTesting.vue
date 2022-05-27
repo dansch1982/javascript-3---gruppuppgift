@@ -34,17 +34,6 @@ export default {
 				index: index,
 			};
 			this.store.addBooking(object);
-			const toggler = document.querySelector(".scheduleToggler");
-			toggler.classList.toggle("added");
-			toggler.addEventListener(
-				"transitionend",
-				() => {
-					toggler.classList.toggle("added");
-				},
-				{
-					once: true,
-				}
-			);
 		},
 	},
 };
@@ -77,7 +66,7 @@ export default {
 		.menu {
 			margin-top: auto;
 			background-color: white;
-			background-image: url('@/assets/menu.png');
+			background-image: url("@/assets/menu.png");
 			background-size: contain;
 			width: 10rem;
 			height: 10rem;

@@ -187,6 +187,7 @@ header {
 					transition: 0.2s;
 					height: 0.3rem;
 					background-color: white;
+					border-radius: 100vw;
 				}
 				&:hover {
 					cursor: pointer;

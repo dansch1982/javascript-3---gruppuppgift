@@ -1,6 +1,8 @@
 <template>
 	<section class="restaurang">
-		<h2>Välkommen till vår restaurang</h2>
+		<section>
+			<h2>Välkommen till vår restaurang</h2>
+		</section>
 		<section class="bg">
 			<article class="menu"></article>
 		</section>

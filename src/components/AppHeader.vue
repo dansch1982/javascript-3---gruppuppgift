@@ -62,12 +62,10 @@ export default {
 			const data = await (await fetch(url)).json();
 			const temp = data.properties.timeseries[0].data.instant.details.air_temperature + "°C";
 
-			//const date = new Date().toLocaleDateString("sv-SE", { hour: "2-digit", minute: "2-digit" });
 			const date = new Date();
 
-			this.$refs.time.innerText = `${date.getHours()}:${date.getMinutes()}`;
+			this.$refs.time.innerText = date.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit" });
 			this.$refs.temp.innerText = temp;
-			//this.$refs.info.innerText = `Tid ${date.getHours()}:${date.getMinutes()}\nTemperatur ${temp}`;
 		},
 		updateState(value) {
 			this.$emit("updateState", value);

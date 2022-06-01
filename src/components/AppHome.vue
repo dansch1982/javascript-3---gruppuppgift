@@ -1,6 +1,9 @@
 <template>
 	<section class="home">
-		<h2>Välkommen till tivolit Tivoliè!</h2>
+        <section class="title">
+            <h2>Välkommen till Tivoliè!</h2>
+            <h3>"Nordens roligaste tivoli"</h3>
+        </section>
 		<section class="bg"></section>
         <section class="hours">
             <h3>Öppentider</h3>
@@ -25,9 +28,17 @@ export default {};
     justify-content: center;
 	margin: auto;
 	gap: 1rem;
-	h2 {
-        text-align: center;
-	}
+    .title {
+
+        h2, h3 {
+            text-align: center;
+        }
+        h3 {
+            font-family: 'Times New Roman', Times, serif;
+            font-weight:400;
+            font-style: italic;
+        }
+    }
 	.bg {
 		border-radius: 10px;
 		box-shadow: 3px 3px 10px black;

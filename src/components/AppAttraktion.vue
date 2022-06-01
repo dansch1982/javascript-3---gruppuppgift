@@ -34,7 +34,6 @@ section {
 			text-align: center;
 		}
 	}
-	//padding: 1rem;
 	&:hover {
 		transform: scale(1.1);
 		cursor: pointer;

@@ -2,6 +2,7 @@
 	<section class="schedule">
 		<h2>Dagens Schema</h2>
 		<section class="bookings" ref="bookings">
+			<!-- Loop through new booking object created with bookings method -->
 			<AppBooking v-for="(booking, index) in bookings()" :key="index">
 				<article class="booking">
 					<span class="time">{{ booking.object.booking.slots[booking.index].time }}</span>
@@ -20,20 +21,37 @@ export default {
 	data() {
 		return {
 			store,
+			/**
+			 * Generate new object form store.bookings
+			 * @returns {Object} - new booking object
+			 */
 			bookings() {
-				const object = {};
+				// Create a new booking object
+				const newBookings = {};
+
+				// Loop through each booking in store.bookings
 				store.bookings.forEach((booking) => {
-					if (!object[`${booking.booking.name}-${booking.index}`]) {
-						object[`${booking.booking.name}-${booking.index}`] = {
+
+					/**
+					 * Check if current booking name and index combination is already in new booking object
+					 * If name does not exist:
+					 * 		Add new object to booking object with name, amount and booking slot index
+					 * If name exists:
+					 * 		Increase amount by one
+					 */
+					if (!newBookings[`${booking.booking.name}-${booking.index}`]) {
+						newBookings[`${booking.booking.name}-${booking.index}`] = {
 							object: booking,
 							amount: 1,
 							index: booking.index,
 						};
 					} else {
-						object[`${booking.booking.name}-${booking.index}`].amount++;
+						newBookings[`${booking.booking.name}-${booking.index}`].amount++;
 					}
 				});
-				return object;
+
+				// Return new booking object
+				return newBookings;
 			},
 		};
 	},

@@ -10,7 +10,14 @@
 				<h2>{{ current.name }}</h2>
 				<p>Boka tid</p>
 				<section class="buttons">
+					<!-- Loop through each time slot -->
 					<article class="button" v-for="(slot, index) in current.slots" :key="index">
+						<!--
+							If space is less than or equal to 0:
+								Click event does nothing, and class change to red.
+							If space is more than 1:
+								Click event run booking method.
+						-->
 						<button @click="slot.space <= 0 ? '' : book(current, index)" :class="slot.space <= 0 ? 'red' : ''">
 							{{ slot.time }}
 							<span>{{ slot.space }} platser kvar</span>
@@ -43,15 +50,31 @@ export default {
 		});
 	},
 	methods: {
+		/**
+		 * Method for booking a time slot
+		 * @param {Object} current - The current booking object
+		 * @param {Number} index - The index of booking object time slot
+		 */
 		book(current, index) {
+			// Get slots of current object using destructuring
 			const { slots } = current;
+
+			// Get specific slot using index
 			const slot = slots[index];
+
+			// Decrease slot by one
 			slot.space--;
+
+			// Create an object to book
 			const object = {
 				booking: current,
 				index: index,
 			};
+
+			// Run addBooking method on booking store
 			this.store.addBooking(object);
+
+			// Run CSS to indicate an item was booked
 			const toggler = document.querySelector(".scheduleToggler");
 			toggler.classList.toggle("added");
 			toggler.addEventListener(
@@ -68,7 +91,7 @@ export default {
 			this.current = {
 				name: null,
 				desc: null,
-				img: "radiobil.jpg",
+				img: "placeholder.png",
 				slots: [],
 			};
 			this.$refs.overlay.classList.remove("opacity-100");

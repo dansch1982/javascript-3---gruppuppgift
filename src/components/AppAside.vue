@@ -3,7 +3,7 @@
 		<h2>Dagens Schema</h2>
 		<section class="bookings" ref="bookings">
 			<!-- Loop through new booking object created with bookings method -->
-			<AppBooking v-for="(booking, index) in bookings()" :key="index">
+			<AppBooking v-for="(booking, index) in bookings(store.bookings)" :key="index">
 				<article class="booking">
 					<span class="time">{{ booking.object.booking.slots[booking.index].time }}</span>
 					<span class="name">{{ booking.amount }}st {{ booking.object.booking.name }}</span>
@@ -23,15 +23,15 @@ export default {
 			store,
 			/**
 			 * Generate new object form store.bookings
-			 * @returns {Object} - new booking object
+			 * @param {Array} bookings - List of bookings
+			 * @returns {Object} - New booking object
 			 */
-			bookings() {
+			bookings(bookings) {
 				// Create a new booking object
 				const newBookings = {};
 
 				// Loop through each booking in store.bookings
-				store.bookings.forEach((booking) => {
-
+				bookings.forEach((booking) => {
 					/**
 					 * Check if current booking name and index combination is already in new booking object
 					 * If name does not exist:
